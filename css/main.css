@@ -1,0 +1,14 @@
+body {
+    background-color: #F6F4F3;
+    margin:0;
+}
+
+.header {
+    background-color: #8A88A6;
+}
+
+#logo {
+    padding-left: 10px;
+    font-size: 40px;
+    font-family: 'Roboto Slab', serif;
+}
