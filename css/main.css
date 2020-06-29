@@ -4,11 +4,44 @@ body {
 }
 
 .header {
-    background-color: #8A88A6;
+    background-color: #8DB7DC;
+    display: block;
 }
+
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.control {
+    background-color: #7C95C8;
+    flex: 1;
+}
+
 
 #logo {
     padding-left: 10px;
     font-size: 40px;
     font-family: 'Roboto Slab', serif;
+}
+
+#add {
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin-right: 8px;
+    padding: 3px 3px;
+}
+
+#addInfo {
+    padding-left: 10px;
+    float: left;
+    font-size: 15px;
+    font-family: 'Roboto Slab', serif;
+}
+
+@media screen and (max-width: 400px) {
+    #addInfo {
+        display: none;
+    }
 }
