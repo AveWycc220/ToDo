@@ -3,7 +3,7 @@ body {
     margin:0;
 }
 
-.header {
+header {
     background-color: #8DB7DC;
     display: block;
 }
@@ -25,23 +25,53 @@ body {
     font-family: 'Roboto Slab', serif;
 }
 
-#add {
-    width: 22px;
-    height: 22px;
+.btn {
     float: right;
-    margin-right: 8px;
-    padding: 3px 3px;
+    border: none;
+    background:  linear-gradient(90deg, #F6F4F3,#7EA2CA);
+    background-size: 300% 300%;
+    size: 22px 22px;
+    margin: 2px 8px 2px 2px;
+    text-align: center;
+    outline: none;
+    font-family: 'Roboto Slab', serif;
+    font-size: 12px;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.btn:hover {
+    background:  linear-gradient(90deg, #F6F4F3,#7EA2CA);
+    background-size: 300% 300%;
+    animation: gradient 4s linear infinite;
+}
+
+.btn:active {
+    background: linear-gradient(90deg, #F6F4F3,#7EA2CA);
+    animation: gradient 0.5s linear infinite;
 }
 
 #addInfo {
-    padding-left: 10px;
+    padding: 2px 0px 0px 10px;
     float: left;
     font-size: 15px;
     font-family: 'Roboto Slab', serif;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 430px) {
     #addInfo {
         display: none;
+    }
+}
+
+@keyframes gradient{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 50% 50%;
+    }
+    100%{
+        background-position: 0 50%;
     }
 }
