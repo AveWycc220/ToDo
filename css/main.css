@@ -77,24 +77,86 @@ header {
 }
 
 .input-task {
+    width: 70%;
+    height: 160px;
     border: 1px solid #3E4552;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     font-family: 'Open Sans', sans-serif; 
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    resize: none;
 }
 
 .input-title {
-    width: calc(1.5vw * 40);
+    width: 70%;
+    height: 40px;
     border: 1px solid #3E4552;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.6vw;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    resize: none;
 }
 
 @media screen and (max-width: 830px) {
     #addInfo {
         display: none;
+    }
+}
+
+@media screen and (max-width: 1695px) {
+    .input-title { 
+        height: 65px;
+    }
+}
+
+@media screen and (max-width: 865px) {
+    .input-title { 
+        height: 90px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .input-title { 
+        height: 115px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1580px) {
+    .input-task {
+        height: 210px;
+    }
+}
+
+@media screen and (max-width: 1390px) {
+    .input-task {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 1143px) {
+    .input-task {
+        height: 350px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 755px) {
+    .input-task {
+        height: 450px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .input-task {
+        font-size: 12px;
+        height: 550px;
     }
 }
 
