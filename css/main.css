@@ -21,7 +21,7 @@ header {
 
 #logo {
     padding-left: 10px;
-    font-size: 40px;
+    font-size: 90px;
     font-family: 'Roboto Slab', serif;
 }
 
@@ -30,12 +30,12 @@ header {
     border: none;
     background:  linear-gradient(90deg, #F6F4F3,#7EA2CA);
     background-size: 300% 300%;
-    size: 22px 22px;
-    margin: 2px 8px 2px 2px;
+    size: 40px 40px;
+    margin: 4px 8px 2px 2px;
     text-align: center;
     outline: none;
     font-family: 'Roboto Slab', serif;
-    font-size: 12px;
+    font-size: 24px;
     border-radius: 4px;
     user-select: none;
 }
@@ -54,7 +54,7 @@ header {
 #addInfo {
     padding: 2px 0px 0px 10px;
     float: left;
-    font-size: 15px;
+    font-size: 30px;
     font-family: 'Roboto Slab', serif;
 }
 
@@ -89,10 +89,10 @@ header {
     border-radius: 3px;
     -webkit-border-radius: 3px;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.5vw;
+    font-size: 1.6vw;
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 830px) {
     #addInfo {
         display: none;
     }
