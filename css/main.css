@@ -58,6 +58,40 @@ header {
     font-family: 'Roboto Slab', serif;
 }
 
+.task {
+    background: #7EA2CA;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+    margin-bottom: 1px;
+    flex: 1;
+}
+
+.task-div {
+    flex: 1;
+    padding-left: 10px;
+
+}
+
+.title-div {
+    flex: 1;
+    padding-left: 10px;
+}
+
+.input-task {
+    border: 1px solid #3E4552;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+.input-title {
+    width: calc(1.5vw * 40);
+    border: 1px solid #3E4552;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5vw;
+}
+
 @media screen and (max-width: 430px) {
     #addInfo {
         display: none;
