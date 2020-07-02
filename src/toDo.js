@@ -1,4 +1,6 @@
-var COUNT = 0
+"use strict"
+
+let COUNT = 0
 
 // Function for finding data
 export function findData() {
@@ -13,13 +15,13 @@ export function findData() {
 }
 
 // Function for finding button.
-export function findButton() { 
-    const button = document.querySelector("#add")
+export function findButton(id) { 
+    const button = document.querySelector(`${id}`)
     if (button) {
-        console.log("Button founded.")
+        console.log(`Button ${id} founded`)
         return button
     } else {
-        console.warn("Button not founded!")
+        console.warn(`Button ${id} not founded`)
         return null
     }
 }
@@ -30,20 +32,21 @@ export function addTask(data) {
     const div = document.createElement("div")
     const divTitle = createInputTitle()
     const divTask = createInputTask()
+    const buttonConfirm = createButton("confirm")
     div.className = "task"
     div.id = `task_${COUNT}`
+    div.append(buttonConfirm)
     div.append(divTitle)
     div.append(divTask)
-    data.after(div)
+    data.prepend(div)
     console.log(`div task_${COUNT} added`)
 }
 
 // Function to create new inputTitleDiv
 function createInputTitle() {
     const inputTitleDiv = document.createElement("div")
-    const inputTitle = document.createElement("input")
+    const inputTitle = document.createElement("textarea")
     inputTitle.className = "input-title"
-    inputTitle.type = "text"
     inputTitle.placeholder = "Title"
     inputTitle.maxLength = "80"
     inputTitleDiv.append(inputTitle)
@@ -57,7 +60,17 @@ function createInputTask() {
     const inputTask = document.createElement("textarea")
     inputTask.className = "input-task"
     inputTask.placeholder = "Task"
+    inputTask.maxLength = "700"
     inputTaskDiv.append(inputTask)
     inputTaskDiv.className = "task-div"
     return inputTaskDiv
+}
+
+// Function to create some button. Please, use only lower-case.
+function createButton(buttonName) { 
+    const button = document.createElement("button")
+    button.className = "btn"
+    button.id = `${buttonName}`
+    button.innerHTML = buttonName[0].toUpperCase() + buttonName.slice(1);
+    return button
 }
