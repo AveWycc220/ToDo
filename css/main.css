@@ -44,6 +44,9 @@ header {
 
 #confirm {
     font-size: 18px;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
 }
 
 .btn:hover {
@@ -66,6 +69,7 @@ header {
 
 .task {
     background: #7EA2CA;
+    position: relative;
     flex: 1;
 }
 
@@ -104,6 +108,23 @@ header {
     padding-left: 10px;
     resize: none;
 }
+
+footer {
+    font-size: 12px;
+    font-family: 'Roboto Slab', serif;
+    background-color: #8DB7DC;
+    position: sticky;
+    bottom: 0;
+}
+
+#location {
+    margin-left: 10px;
+}
+
+#site {
+    float: right;
+    margin-right: 10px;
+}   
 
 @media screen and (max-width: 830px) {
     #addInfo {
