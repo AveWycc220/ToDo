@@ -15,6 +15,8 @@ header {
 
 .control {
     background-color: #7C95C8;
+    position: sticky;
+    top: 0;
     flex: 1;
 }
 
@@ -40,6 +42,10 @@ header {
     user-select: none;
 }
 
+#confirm {
+    font-size: 18px;
+}
+
 .btn:hover {
     background:  linear-gradient(90deg, #F6F4F3,#7EA2CA);
     background-size: 300% 300%;
@@ -60,15 +66,12 @@ header {
 
 .task {
     background: #7EA2CA;
-    box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
-    margin-bottom: 1px;
     flex: 1;
 }
 
 .task-div {
     flex: 1;
     padding-left: 10px;
-
 }
 
 .title-div {
