@@ -1,6 +1,7 @@
 "use strict"
 
 let COUNT = 0
+let ANIMATION_SPEED = 20
 
 // Function for finding data
 export function findData() {
@@ -42,6 +43,22 @@ export function addTask(data) {
     console.log(`div task_${COUNT} added`)
 }
 
+// Function to confirm task,
+export function confirmTask(data) {
+    let inputTask = data.querySelector(`#task_${COUNT}`).querySelector(".task-div").querySelector(`.input-task`)
+    let inputTaskHeight = getComputedStyle(inputTask).height
+    inputTask.style.height = inputTaskHeight
+    let animation = setInterval(() => {
+        if (parseInt(inputTask.style.height.match(/\d+/)) <= ANIMATION_SPEED) {
+            clearInterval(animation)
+            inputTask.style.display = "none"
+        } else {
+            inputTask.style.height = (parseInt(inputTask.style.height.match(/\d+/))-ANIMATION_SPEED).toString() + "px"
+            console.log(inputTask.style.height)
+        }
+    }, 30) 
+}
+
 // Function to create new inputTitleDiv
 function createInputTitle() {
     const inputTitleDiv = document.createElement("div")
@@ -59,6 +76,7 @@ function createInputTask() {
     const inputTaskDiv = document.createElement("div")
     const inputTask = document.createElement("textarea")
     inputTask.className = "input-task"
+    inputTask.id = `input_task_${COUNT}`
     inputTask.placeholder = "Task"
     inputTask.maxLength = "700"
     inputTaskDiv.append(inputTask)

@@ -1,4 +1,4 @@
-import {findData, findButton, addTask} from './toDo.js'
+import {findData, findButton, addTask, confirmTask} from './toDo.js'
 
 const data = findData()
 const buttonAdd = findButton("#add")
@@ -12,9 +12,14 @@ buttonAdd.onclick = () => {
         addInfo.innerHTML = null
         buttonConfirm = findButton("#confirm")
         isTaskAdded = false
+        buttonConfirm.onclick = () => {
+            confirmTask(data)
+            isTaskAdded = true
+        }
     } else {
         addInfo.innerHTML = "Confirm your task before you will add new"
         buttonConfirm.onclick = () => {
+            confirmTask(data)
             isTaskAdded = true
         }
     }
