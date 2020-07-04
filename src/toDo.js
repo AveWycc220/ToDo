@@ -2,6 +2,7 @@
 
 let COUNT = 0
 let ANIMATION_SPEED = 20
+let LAST_HEIGHT = []
 
 // Function for finding data
 export function findData() {
@@ -48,6 +49,7 @@ export function confirmTask(data) {
     let inputTask = data.querySelector(`#task_${COUNT}`).querySelector(".task-div").querySelector(`.input-task`)
     let inputTaskHeight = getComputedStyle(inputTask).height
     inputTask.style.height = inputTaskHeight
+    LAST_HEIGHT[COUNT] = inputTaskHeight
     let animation = setInterval(() => {
         if (parseInt(inputTask.style.height.match(/\d+/)) <= ANIMATION_SPEED) {
             clearInterval(animation)
@@ -57,18 +59,19 @@ export function confirmTask(data) {
         }
     }, 30)
     let buttonConfirm = findButton("#confirm")
-    buttonConfirm.id = `show_${COUNT}`
-    buttonConfirm.className = buttonConfirm.className + " show"
-    buttonConfirm.innerHTML = "Show"
+    buttonConfirm.remove()
+    let buttonShow = createButton("show")
+    buttonShow .className = buttonShow.className + " show"
+    buttonShow.id = `show_${COUNT}`
     let buttonDelete = createButton("delete")
+    buttonDelete.id = `delete_${COUNT}`
     buttonDelete.className = buttonDelete.className + " delete"
-    data.querySelector(`#task_${COUNT}`).append(buttonDelete)
+    let task = data.querySelector(`#task_${COUNT}`)
+    task.append(buttonDelete)
+    task.append(buttonShow)
 }
 
-// Function for showing task.
-export function showTask(data) {
-
-}
+// TODO Function for showing task.
 
 // Function to create new inputTitleDiv
 function createInputTitle() {
