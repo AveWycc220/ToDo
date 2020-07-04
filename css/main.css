@@ -49,6 +49,20 @@ header {
     bottom: 10px;
 }
 
+.show {
+    font-size: 18px;
+    position: absolute;
+    right: 70px;
+    top: 2px;
+}
+
+.delete {
+    font-size: 18px;
+    position: absolute;
+    right: 0px;
+    top: 2px
+}
+
 .btn:hover {
     background:  linear-gradient(90deg, #F6F4F3,#7EA2CA);
     background-size: 300% 300%;
@@ -141,6 +155,12 @@ footer {
 @media screen and (max-width: 865px) {
     .input-title { 
         height: 90px;
+    }
+    .show {
+        right: 0;
+    }
+    .delete {
+        top: 40px;
     }
 }
 
