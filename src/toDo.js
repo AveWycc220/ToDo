@@ -43,7 +43,7 @@ export function addTask(data) {
     console.log(`div task_${COUNT} added`)
 }
 
-// Function to confirm task,
+// Function to confirm task.
 export function confirmTask(data) {
     let inputTask = data.querySelector(`#task_${COUNT}`).querySelector(".task-div").querySelector(`.input-task`)
     let inputTaskHeight = getComputedStyle(inputTask).height
@@ -54,9 +54,20 @@ export function confirmTask(data) {
             inputTask.style.display = "none"
         } else {
             inputTask.style.height = (parseInt(inputTask.style.height.match(/\d+/))-ANIMATION_SPEED).toString() + "px"
-            console.log(inputTask.style.height)
         }
-    }, 30) 
+    }, 30)
+    let buttonConfirm = findButton("#confirm")
+    buttonConfirm.id = `show_${COUNT}`
+    buttonConfirm.className = buttonConfirm.className + " show"
+    buttonConfirm.innerHTML = "Show"
+    let buttonDelete = createButton("delete")
+    buttonDelete.className = buttonDelete.className + " delete"
+    data.querySelector(`#task_${COUNT}`).append(buttonDelete)
+}
+
+// Function for showing task.
+export function showTask(data) {
+
 }
 
 // Function to create new inputTitleDiv
