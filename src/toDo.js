@@ -49,7 +49,7 @@ export function confirmTask(data) {
     let inputTask = data.querySelector(`#task_${COUNT}`).querySelector(".task-div").querySelector(`.input-task`)
     let inputTaskHeight = getComputedStyle(inputTask).height
     inputTask.style.height = inputTaskHeight
-    LAST_HEIGHT[COUNT] = inputTaskHeight
+    LAST_HEIGHT.push(inputTaskHeight)
     let animation = setInterval(() => {
         if (parseInt(inputTask.style.height.match(/\d+/)) <= ANIMATION_SPEED) {
             clearInterval(animation)
@@ -71,7 +71,50 @@ export function confirmTask(data) {
     task.append(buttonShow)
 }
 
-// TODO Function for showing task.
+// Function that show/close task.
+export function showOrCloseTask(data, taskId, showOrClose) {
+    // Close
+    if (showOrClose){
+        const inputTask = data.querySelector(`#task_${taskId}`).querySelector(".task-div").querySelector(`.input-task`)
+        let inputTaskHeight = getComputedStyle(inputTask).height
+        inputTask.style.height = inputTaskHeight
+        LAST_HEIGHT[taskId-1] = inputTaskHeight
+        const buttonShow = findButton(`#show_${taskId}`)
+        buttonShow.innerHTML = "Show"
+        buttonShow.disabled = true
+        console.log(LAST_HEIGHT[taskId-1])
+        if (typeof animation === "undefined") {
+            let animation = setInterval(() => {
+                if (parseInt(inputTask.style.height.match(/\d+/)) <= ANIMATION_SPEED) {
+                    clearInterval(animation)
+                    inputTask.style.display = "none"
+                    buttonShow.disabled = false
+                } else {
+                    inputTask.style.height = (parseInt(inputTask.style.height.match(/\d+/))-ANIMATION_SPEED).toString() + "px"
+                }
+            }, 30)
+        }
+        return false
+    // Open
+    } else {
+        const inputTask = data.querySelector(`#task_${taskId}`).querySelector(".task-div").querySelector(`.input-task`)
+        inputTask.style.display = "block"
+        const buttonShow = findButton(`#show_${taskId}`)
+        buttonShow.innerHTML = "Close"
+        buttonShow.disabled = true
+        if (typeof animation === "undefined"){
+            let animation = setInterval(() => {
+                if (parseInt(inputTask.style.height.match(/\d+/)) >= parseInt(LAST_HEIGHT[taskId-1].match(/\d+/))) {
+                    clearInterval(animation)
+                    buttonShow.disabled = false
+                } else {
+                    inputTask.style.height = (parseInt(inputTask.style.height.match(/\d+/))+ANIMATION_SPEED).toString() + "px"
+                }
+            }, 30)
+        }
+        return true    
+    }
+}
 
 // Function to create new inputTitleDiv
 function createInputTitle() {
