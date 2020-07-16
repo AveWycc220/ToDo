@@ -116,6 +116,15 @@ export function showOrCloseTask(data, taskId, showOrClose) {
     }
 }
 
+// Function for deleting task.
+export function deleteTask(data, taskId) {
+    const divTask = data.querySelector(`#task_${taskId}`)
+    divTask.remove(divTask)
+    COUNT -= 1
+    let taskList = data.querySelectorAll('.task')
+    changeId(taskList)
+}
+
 // Function to create new inputTitleDiv
 function createInputTitle() {
     const inputTitleDiv = document.createElement("div")
@@ -148,4 +157,12 @@ function createButton(buttonName) {
     button.id = `${buttonName}`
     button.innerHTML = buttonName[0].toUpperCase() + buttonName.slice(1);
     return button
+}
+
+function changeId(taskList) {
+    taskList.forEach((element, i) => {
+        element.id = `task_${COUNT-i}`
+        element.querySelector('.delete').id = `delete_${COUNT-i}`
+        element.querySelector('.show').id = `show_${COUNT-i}`
+    });
 }

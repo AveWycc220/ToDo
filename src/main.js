@@ -1,4 +1,4 @@
-import {findData, findButton, addTask, confirmTask, showOrCloseTask} from './toDo.js'
+import {findData, findButton, addTask, confirmTask, showOrCloseTask, deleteTask} from './toDo.js'
 
 let COUNT = 0
 
@@ -29,8 +29,9 @@ buttonAdd.onclick = () => {
             buttonShowList.push(buttonShow)
             let buttonDelete = document.querySelector(`#delete_${COUNT}`)
             buttonDelete.addEventListener("click", () => {
-                // TODO Create function DeleteTask
-                console.log(buttonDelete)
+                const taskId = parseInt(buttonShow.id.match(/\d+/))
+                deleteTask(data, taskId)
+                COUNT -= 1
             })
             buttonShowDelete.push(buttonDelete)
         }
@@ -49,8 +50,9 @@ buttonAdd.onclick = () => {
             buttonShowList.push(buttonShow)
             let buttonDelete = document.querySelector(`#delete_${COUNT}`)
             buttonDelete.addEventListener("click", () => {
-                 // TODO Create function DeleteTask
-                console.log(buttonDelete)
+                const taskId = parseInt(buttonShow.id.match(/\d+/))
+                deleteTask(data, taskId)
+                COUNT -= 1
             })
             buttonShowDelete.push(buttonDelete)
         }
