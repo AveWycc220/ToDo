@@ -73,6 +73,7 @@ export function confirmTask(data, isConfirmed=false) {
         buttonDelete.addEventListener("click", () => {
             const taskId = parseInt(buttonDelete.id.match(/\d+/));
             deleteTask(data, taskId);
+            console.log(COUNT);
         })
         let task = data.querySelector(`#task_${COUNT}`);
         task.append(buttonDelete);
@@ -98,9 +99,19 @@ export function confirmTask(data, isConfirmed=false) {
         let buttonShow = createButton("show");
         buttonShow.className = buttonShow.className + " show";
         buttonShow.id = `show_${COUNT}`;
+        let opened = false;
+        buttonShow.addEventListener("click", () => {
+            const taskId = parseInt(buttonShow.id.match(/\d+/));
+            opened = showOrCloseTask(data, taskId, opened);
+        })
         let buttonDelete = createButton("delete");
         buttonDelete.id = `delete_${COUNT}`;
         buttonDelete.className = buttonDelete.className + " delete";
+        buttonDelete.addEventListener("click", () => {
+            const taskId = parseInt(buttonDelete.id.match(/\d+/));
+            deleteTask(data, taskId);
+            console.log(COUNT);
+        })
         let task = data.querySelector(`#task_${COUNT}`);
         task.append(buttonDelete);
         task.append(buttonShow);
@@ -176,9 +187,13 @@ export function load(data) {
 function createInputTitle() {
     const inputTitleDiv = document.createElement("div");
     const inputTitle = document.createElement("textarea");
+    let inputName = `title_${COUNT}`
     inputTitle.className = "input-title";
     inputTitle.placeholder = "Title";
     inputTitle.maxLength = "80";
+    inputTitle.addEventListener("keydown", () => {
+        localStorage.setItem(inputName, inputTitle.value)
+    })
     inputTitleDiv.append(inputTitle);
     inputTitleDiv.className = "title-div";
     return inputTitleDiv;
@@ -188,10 +203,14 @@ function createInputTitle() {
 function createInputTask() {
     const inputTaskDiv = document.createElement("div");
     const inputTask = document.createElement("textarea");
+    let inputName = `task_${COUNT}`
     inputTask.className = "input-task";
     inputTask.id = `input_task_${COUNT}`;
     inputTask.placeholder = "Task";
     inputTask.maxLength = "700";
+    inputTask.addEventListener("keydown", () => {
+        localStorage.setItem(inputName, inputTask.value)
+    })
     inputTaskDiv.append(inputTask);
     inputTaskDiv.className = "task-div";
     return inputTaskDiv;
