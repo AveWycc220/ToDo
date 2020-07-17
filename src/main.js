@@ -1,4 +1,4 @@
-import {findData, findButton, addTask, confirmTask, showOrCloseTask, deleteTask} from './toDo.js';
+import {findData, findButton, addTask, confirmTask, showOrCloseTask, deleteTask, load} from './toDo.js';
 
 let COUNT = 0;
 
@@ -9,6 +9,9 @@ let isTaskAdded = true;
 let buttonConfirm = undefined;
 let buttonShowList = [];
 let buttonShowDelete = [];
+
+//window.onload = load(data);
+COUNT = load(data);
 
 buttonAdd.onclick = () => {
     if (isTaskAdded) {
@@ -29,7 +32,7 @@ buttonAdd.onclick = () => {
             buttonShowList.push(buttonShow);
             let buttonDelete = document.querySelector(`#delete_${COUNT}`);
             buttonDelete.addEventListener("click", () => {
-                const taskId = parseInt(buttonShow.id.match(/\d+/));
+                const taskId = parseInt(buttonDelete.id.match(/\d+/));
                 deleteTask(data, taskId);
                 COUNT -= 1;
             })
@@ -50,7 +53,7 @@ buttonAdd.onclick = () => {
             buttonShowList.push(buttonShow);
             let buttonDelete = document.querySelector(`#delete_${COUNT}`);
             buttonDelete.addEventListener("click", () => {
-                const taskId = parseInt(buttonShow.id.match(/\d+/));
+                const taskId = parseInt(buttonDelete.id.match(/\d+/));
                 deleteTask(data, taskId);
                 COUNT -= 1;
             })
