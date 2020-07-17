@@ -26,21 +26,6 @@ buttonAdd.onclick = () => {
         buttonConfirm.onclick = () => {
             confirmTask(data);
             isTaskAdded = true;
-            let buttonShow = document.querySelector(`#show_${COUNT}`);
-            let opened = false;
-            buttonShow.addEventListener("click", () => {
-                const taskId = parseInt(buttonShow.id.match(/\d+/));
-                opened = showOrCloseTask(data, taskId, opened);
-            })
-            buttonShowList.push(buttonShow);
-            let buttonDelete = document.querySelector(`#delete_${COUNT}`);
-            buttonDelete.addEventListener("click", () => {
-                const taskId = parseInt(buttonDelete.id.match(/\d+/));
-                deleteTask(data, taskId);
-                buttonShowList.splice(COUNT, 1);
-                buttonDeleteList.splice(COUNT, 1);
-            })
-            buttonDeleteList.push(buttonDelete);
         }
     }
 }
